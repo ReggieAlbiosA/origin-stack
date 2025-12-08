@@ -1,0 +1,14 @@
+{
+  "extends": "@repo/typescript-config/nextjs.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"],
+      "@/lib/*": ["./src/lib/*"],
+      "@prisma/client": ["./src/generated/prisma/client.ts"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}
