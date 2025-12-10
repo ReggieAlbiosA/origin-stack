@@ -1,7 +1,7 @@
 // app/posts/page.tsx
 
 import { cacheTag } from "next/cache";
-import prisma from "@repo/database/lib/prisma";
+import { prisma } from "@repo/database/prisma";
 import {
   Card,
   CardHeader,
@@ -15,7 +15,7 @@ import {
   EmptyDescription,
 } from "@repo/ui/components/shadcn-ui/empty";
 import { Suspense } from "react";
-import { Prisma } from "@repo/database/generated/prisma/client";
+import { Prisma } from "@repo/database/client";
 
 // Define the return type using Prisma's utility type
 type QuoteWithUser = Prisma.QuotePostGetPayload<{

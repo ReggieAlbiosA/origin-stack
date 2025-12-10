@@ -1,7 +1,7 @@
 // app/posts/create/page.tsx
 
 import { revalidateTag, updateTag } from "next/cache";
-import prisma from "@repo/database/lib/prisma";
+import { prisma } from "@repo/database/prisma";
 import { redirect } from "next/navigation";
 import {
   Card,

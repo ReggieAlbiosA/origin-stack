@@ -1,17 +1,15 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 
 type CalculatorLayoutProps = {
-    children: React.ReactNode
-    className?: string
-}
+  children: React.ReactNode;
+  className?: string;
+};
 
-export function CalculatorLayout({ children, className }: CalculatorLayoutProps) {
-    return (
-        <div className={`grid  ${className || ''}`}>
-            {children}
-        </div>
-    )
+export function CalculatorLayout({
+  children,
+  className,
+}: CalculatorLayoutProps) {
+  return <div className={`grid  ${className || ""}`}>{children}</div>;
 }
-

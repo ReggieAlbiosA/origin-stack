@@ -1,7 +1,7 @@
 // app/posts/my-posts/page.tsx
 
 import { cacheTag } from "next/cache";
-import prisma from "@repo/database/lib/prisma";
+import { prisma } from "@repo/database/prisma";
 import {
   Card,
   CardHeader,
@@ -19,7 +19,7 @@ import Link from "next/link";
 import { Route } from "next";
 import { auth } from "@repo/auth/auth";
 import { headers } from "next/headers";
-import { Prisma } from "@repo/database/generated/prisma/client";
+import { Prisma } from "@repo/database/client";
 
 // Define the return type using Prisma's utility type
 type QuoteWithUser = Prisma.QuotePostGetPayload<{

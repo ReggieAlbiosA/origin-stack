@@ -1,3 +1,3 @@
 export default function CachingRevalidatingPage() {
-    return null;
+  return null;
 }

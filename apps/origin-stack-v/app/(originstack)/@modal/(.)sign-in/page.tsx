@@ -4,11 +4,11 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
-} from "@repo/ui/components/shadcn-ui/dialog";
+} from "@/components/shadcn-ui/dialog";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import { Button } from "@repo/ui/components/shadcn-ui/button";
+import { Button } from "@/components/shadcn-ui/button";
 import { authClient } from "@repo/auth/auth-client";
 
 export default function SignInPage() {

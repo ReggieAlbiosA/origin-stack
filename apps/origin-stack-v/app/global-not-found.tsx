@@ -1,5 +1,5 @@
 // Import global styles and fonts
-import './globals.css'
+import "@repo/ui/globals.css"
 import { Geist } from 'next/font/google'
 import type { Metadata } from 'next'
 import Link from 'next/link'

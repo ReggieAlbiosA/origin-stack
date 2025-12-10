@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "../../globals.css";
-import DraggableFavButton from "@repo/ui/components/globals/client/draggable-fab-button";
+import "@repo/ui/globals.css";
+import DraggableFavButton from "@/components/globals/client/draggable-fab-button";
 import { ThemeProvider } from "next-themes";
-import Header from "@repo/ui/components/composite-ui/server/header";
+import Header from "@/components/composite-ui/server/header";
 import { navigationItems } from "@/app/(originstack)/react-demo/_shared/data/value";
 import { type Route } from "next";
 import Link from "next/link";
 import { searchDocsConfig } from "@/app/(originstack)/react-demo/demo/_shared/data/value";
-import { type NavItem } from "@repo/ui/components/header/client/navigation-menu";
+import { type NavItem } from "@/components/header/client/navigation-menu";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
