@@ -4,6 +4,9 @@
   "private": true,
   "main": "./src/lib/prisma.ts",
   "types": "./src/lib/prisma.ts",
+  "exports": {
+    "./src/lib/prisma.ts": "./src/lib/prisma.ts"
+  },
   "scripts": {
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
