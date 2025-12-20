@@ -127,9 +127,8 @@
 }
 
 *:not(.debug) {
-  /* outline: 1px dashed red */
+  /* outline: 1px dashed red; */
 }
-
 
 /* For Webkit browsers (Chrome, Safari, Edge, Opera) */
 ::-webkit-scrollbar {
@@ -218,7 +217,6 @@
 .ninetyfive-stack {
   z-index: 95;
 }
-
 
 /* .debug>* {
   outline: 1px dashed greenyellow;
