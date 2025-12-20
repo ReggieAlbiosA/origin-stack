@@ -19,7 +19,7 @@ import NavigationMenu, {
   type NavItem,
 } from "@/components/header/client/navigation-menu";
 import CommandPalette from "@/components/header/client/search-interface";
-import type { SidebarConfig } from "@/components/sidebar/client/sidebar";
+import type { SidebarConfig } from "@/src/components/composables/client/sidebar";
 import { SiGithub } from "react-icons/si";
 import { DesktopViewThemeToggle } from "@/components/header/client/theme-toggle";
 import MenuButton from "@/components/header/client/mobile-main-nav-menu";

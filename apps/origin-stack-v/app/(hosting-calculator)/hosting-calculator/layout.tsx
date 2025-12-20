@@ -12,7 +12,7 @@ import {
   SidebarNavigationTrigger,
   SidebarNavigationGroup,
   SidebarNavigationItemLink,
-} from "@/components/sidebar/client/sidebar";
+} from "@/components/composables/client/sidebar";
 import { Layers, Database, Calculator } from "lucide-react";
 import { SiNextdotjs, SiCloudflare } from "react-icons/si";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
