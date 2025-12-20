@@ -12,7 +12,10 @@ import { VercelInputs } from "./inputs";
 import { SiNextdotjs } from "react-icons/si";
 import type { VercelPlan } from "./types";
 import { TrendingUp } from "lucide-react";
-import { Sidebar, SidebarContent } from "@/components/sidebar/client/sidebar";
+import {
+  Sidebar,
+  SidebarContent,
+} from "@/components/composables/client/sidebar";
 
 export default function VercelPage() {
   return (
