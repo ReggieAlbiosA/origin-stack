@@ -1,20 +1,20 @@
 "use client";
 
-import { DiagramProvider } from "../../components/core/provider";
+import { DiagramProvider } from "../../../components/core/provider";
 import {
   DiagramLayout,
   DiagramHeader,
   DiagramControls,
   DiagramCard,
   DiagramRenderer,
-} from "../../components/config/diagram-ui";
-import { DiagramConfig } from "../../types";
+} from "../../../components/config/diagram-ui";
+import { DiagramConfig } from "../../../types";
 
-export const gitMergeSquashConfig: DiagramConfig = {
-  id: "git-merge-squash",
-  title: "Git Merge Squash",
+export const gitNonFastForwardMergeConfig: DiagramConfig = {
+  id: "git-non-fast-forward-merge",
+  title: "Git Non-Fast-Forward Merge",
   subtitle:
-    "Visualizing how multiple commits are combined into a single commit on the main branch.",
+    "Visualizing how a merge commit with two parents preserves branch history.",
 
   dimensions: {
     width: 700,
@@ -25,7 +25,8 @@ export const gitMergeSquashConfig: DiagramConfig = {
   colors: {
     main: "#8b5cf6", // Purple
     feature: "#3b82f6", // Blue
-    squash: "#10b981", // Green
+    squash: "#10b981", // Green (not used)
+    merge: "#f59e0b", // Orange
     highlight: "#fbbf24", // Yellow
     particle: "#3b82f6", // Blue
   },
@@ -72,45 +73,46 @@ export const gitMergeSquashConfig: DiagramConfig = {
       duration: 0,
     },
     {
-      id: "gather",
-      title: "Step 1: Gathering Changes",
+      id: "identify",
+      title: "Step 1: Identifying Branches",
       description:
-        "Git identifies all commits on the feature branch (C3, C4, C5) that need to be combined.",
+        "Git identifies both branches that need to be merged. The feature branch has commits C3, C4, C5 and main is at C2.",
       progress: 33,
       duration: 800,
-      highlightNodes: ["C3", "C4", "C5"],
+      highlightNodes: ["C2", "C5"],
       highlightColor: "#fbbf24",
     },
     {
-      id: "stage",
-      title: "Step 2: Combining Changes",
+      id: "prepare",
+      title: "Step 2: Preparing Merge",
       description:
-        "The changes from C3, C4, and C5 are extracted and combined into a single set of changes.",
+        "Git prepares to create a merge commit that will have <b>two parents</b>: one from main (C2) and one from feature (C5).",
       progress: 66,
-      duration: 1200,
-      moveParticles: {
-        fromNodes: ["C3", "C4", "C5"],
-        toPosition: { x: 400, y: 250 },
-      },
+      duration: 1000,
+      highlightNodes: ["C2", "C5"],
+      highlightColor: "#f59e0b",
     },
     {
       id: "complete",
-      title: "Step 3: Squash Commit Created",
+      title: "Step 3: Merge Commit Created",
       description:
-        "A new commit <b>S1</b> is created on main containing all the combined changes. The original feature commits are no longer referenced.",
+        "A new merge commit <b>M1</b> is created on main with two parents. It preserves the entire branch history - all feature commits (C3, C4, C5) remain in the history, and the merge commit ties them together.",
       progress: 100,
-      duration: 800,
+      duration: 1200,
       addNodes: [
-        { id: "S1", label: "S1", x: 400, y: 250, type: "squash", radius: 22 },
+        { id: "M1", label: "M1", x: 560, y: 250, type: "merge", radius: 22 },
       ],
-      addLinks: [{ source: "C2", target: "S1" }],
-      fadeNodes: ["C3", "C4", "C5"],
-      fadeLinks: ["C3", "C4", "C5"],
+      addLinks: [
+        { source: "C2", target: "M1" },
+        { source: "C5", target: "M1", curved: true },
+      ],
+      highlightNodes: ["M1"],
+      highlightColor: "#f59e0b",
     },
   ],
 
   primaryAction: {
-    label: "Squash Merge",
+    label: "Non-FF Merge",
     icon: "GitMerge",
   },
 
@@ -128,15 +130,15 @@ export const gitMergeSquashConfig: DiagramConfig = {
   ],
 };
 
-export default function GitMergeSquashPage() {
+export default function GitNonFastForwardMergePage() {
   return (
-    <DiagramProvider config={gitMergeSquashConfig}>
-      <GitMergeSquashDiagram />
+    <DiagramProvider config={gitNonFastForwardMergeConfig}>
+      <GitNonFastForwardMergeDiagram />
     </DiagramProvider>
   );
 }
 
-function GitMergeSquashDiagram() {
+function GitNonFastForwardMergeDiagram() {
   return (
     <DiagramLayout>
       <DiagramHeader />

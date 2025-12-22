@@ -5,7 +5,7 @@ import * as d3 from "d3";
 import { cn } from "@/lib/utils";
 import { Button } from "@repo/ui/components/shadcn-ui/button";
 import { Card, CardContent } from "@repo/ui/components/shadcn-ui/card";
-import { Play, RotateCcw } from "lucide-react";
+import { Play, Pause, ChevronLeft, ChevronRight } from "lucide-react";
 import { useDiagram } from "../core/provider";
 import {
   generateLinkPath,
@@ -154,28 +154,73 @@ interface DiagramControlsProps {
 }
 
 export function DiagramControls({ className }: DiagramControlsProps) {
-  const { config, runAnimation, reset, isAnimating, isComplete } = useDiagram();
+  const {
+    config,
+    runAnimation,
+    isAnimating,
+    isPaused,
+    pause,
+    resume,
+    nextStep,
+    prevStep,
+    currentStep,
+  } = useDiagram();
+
+  const handlePlayPause = () => {
+    if (isAnimating && !isPaused) {
+      pause();
+    } else if (isPaused) {
+      resume();
+    } else {
+      runAnimation();
+    }
+  };
+
+  const isAtStart = currentStep === 0;
+  const isAtEnd = currentStep === config.steps.length - 1;
 
   return (
     <div className={cn("space-y-4", className)}>
-      {/* Buttons */}
+      {/* Navigation Buttons */}
       <div className="flex items-center gap-3">
+        {/* Previous Step */}
         <Button
-          onClick={runAnimation}
-          disabled={isAnimating || isComplete}
-          className="gap-2"
-        >
-          <Play className="h-4 w-4" />
-          {config.primaryAction.label}
-        </Button>
-        <Button
-          onClick={reset}
+          onClick={prevStep}
           variant="outline"
-          disabled={isAnimating}
+          disabled={isAtStart || (isAnimating && !isPaused)}
           className="gap-2"
+          size="icon"
         >
-          <RotateCcw className="h-4 w-4" />
-          Reset
+          <ChevronLeft className="h-4 w-4" />
+        </Button>
+
+        {/* Play/Pause Button */}
+        <Button
+          onClick={handlePlayPause}
+          className="gap-2 min-w-[140px]"
+        >
+          {isAnimating && !isPaused ? (
+            <>
+              <Pause className="h-4 w-4" />
+              Pause
+            </>
+          ) : (
+            <>
+              <Play className="h-4 w-4" />
+              {isPaused ? "Resume" : config.primaryAction.label}
+            </>
+          )}
+        </Button>
+
+        {/* Next Step */}
+        <Button
+          onClick={nextStep}
+          variant="outline"
+          disabled={isAtEnd || (isAnimating && !isPaused)}
+          className="gap-2"
+          size="icon"
+        >
+          <ChevronRight className="h-4 w-4" />
         </Button>
       </div>
 

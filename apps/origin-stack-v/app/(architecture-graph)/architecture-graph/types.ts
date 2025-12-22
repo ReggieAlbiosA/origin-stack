@@ -63,6 +63,8 @@ export interface AnimationStep {
     toPosition: { x: number; y: number };
   };
   updateBranches?: Partial<BranchConfig>[]; // Branch visibility changes
+  updateNodes?: Array<{ id: string; type: NodeType }>; // Update node types
+  updateLinks?: Array<{ source: string; target: string; curved?: boolean }>; // Update link properties
 }
 
 // ============================================================================
@@ -131,11 +133,16 @@ export interface DiagramContextValue {
   currentStep: number;
   isAnimating: boolean;
   isComplete: boolean;
+  isPaused: boolean;
 
   // Actions
   runAnimation: () => Promise<void>;
   reset: () => void;
   goToStep: (step: number) => void;
+  nextStep: () => void;
+  prevStep: () => void;
+  pause: () => void;
+  resume: () => Promise<void>;
 
   // Current step info
   stepInfo: AnimationStep | null;
