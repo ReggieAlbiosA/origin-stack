@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useEffect, useCallback, useMemo } from "react";
-import { Search, FileText, Hash, Star, X } from "lucide-react";
+import { Search, FileText, Link2, Star, X } from "lucide-react";
 import Link from "next/link";
 import { Route } from "next";
+import { useRouter } from "next/navigation";
 import type {
   SidebarConfig,
   NavigationItem,
-} from "@/src/components/composables/client/sidebar";
+} from "@/components/composables/client/sidebar";
 
 // Define interface for search result items
 interface SearchResultItem {
@@ -45,7 +46,7 @@ function getCookie(name: string): string | null {
   const nameEQ = name + "=";
   const ca = document.cookie.split(";");
   for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
+    let c = ca[i] ?? "";
     while (c.charAt(0) === " ") c = c.substring(1, c.length);
     if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
   }
@@ -192,6 +193,7 @@ function groupSearchResults(
 }
 
 export default function SearchInterface({ docsItems }: SearchInterfaceProps) {
+  const router = useRouter();
   const [open, setOpen] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
   const [selected, setSelected] = useState<number>(0);
@@ -219,9 +221,13 @@ export default function SearchInterface({ docsItems }: SearchInterfaceProps) {
 
     if (existingIndex !== -1) {
       // Move to top and update timestamp, preserve favorite status
-      const existing = recent[existingIndex];
+      const existing = recent[existingIndex]!;
       recent.splice(existingIndex, 1);
-      recent.unshift({ ...existing, timestamp: Date.now() });
+      recent.unshift({
+        ...existing,
+        isFavorite: existing.isFavorite ?? false,
+        timestamp: Date.now(),
+      });
     } else {
       // Add new item
       recent.unshift({
@@ -232,9 +238,14 @@ export default function SearchInterface({ docsItems }: SearchInterfaceProps) {
 
       // Remove oldest non-favorite items if exceeding limit
       while (recent.length > MAX_ITEMS) {
-        const oldestNonFavoriteIndex = recent.findLastIndex(
-          (r) => !r.isFavorite
-        );
+        // Find last non-favorite (oldest non-favorite)
+        let oldestNonFavoriteIndex = -1;
+        for (let i = recent.length - 1; i >= 0; i--) {
+          if (!recent[i]?.isFavorite) {
+            oldestNonFavoriteIndex = i;
+            break;
+          }
+        }
         if (oldestNonFavoriteIndex !== -1) {
           recent.splice(oldestNonFavoriteIndex, 1);
         } else {
@@ -253,8 +264,11 @@ export default function SearchInterface({ docsItems }: SearchInterfaceProps) {
     const recent = getRecentSearches();
     const index = recent.findIndex((r) => r.href === href);
 
-    if (index !== -1) {
-      recent[index].isFavorite = !recent[index].isFavorite;
+    if (index !== -1 && typeof recent[index]?.isFavorite === "boolean") {
+      recent[index] = {
+        ...recent[index]!,
+        isFavorite: !recent[index]!.isFavorite,
+      };
       saveRecentSearches(recent);
       setRecentSearches(recent);
     }
@@ -333,13 +347,15 @@ export default function SearchInterface({ docsItems }: SearchInterfaceProps) {
         case "Enter":
           e.preventDefault();
           if (filteredItems[selected]) {
-            addToRecent(filteredItems[selected]);
+            const selectedItem = filteredItems[selected];
+            addToRecent(selectedItem);
             setOpen(false);
+            router.push(selectedItem.href as Route);
           }
           break;
       }
     },
-    [open, selected, filteredItems, addToRecent]
+    [open, selected, filteredItems, addToRecent, router]
   );
 
   // Set up global keydown listener
@@ -462,7 +478,7 @@ export default function SearchInterface({ docsItems }: SearchInterfaceProps) {
                                 className="flex-1 flex items-center gap-3 min-w-0"
                               >
                                 {item.isChild ? (
-                                  <Hash className="w-4 h-4 text-zinc-400 dark:text-zinc-500 flex-shrink-0" />
+                                  <Link2 className="w-4 h-4 text-zinc-400 dark:text-zinc-500 flex-shrink-0" />
                                 ) : (
                                   <FileText className="w-4 h-4 text-zinc-400 dark:text-zinc-500 flex-shrink-0" />
                                 )}
@@ -531,7 +547,7 @@ export default function SearchInterface({ docsItems }: SearchInterfaceProps) {
                                 className="flex-1 flex items-center gap-3 min-w-0"
                               >
                                 {item.isChild ? (
-                                  <Hash className="w-4 h-4 text-zinc-400 dark:text-zinc-500 flex-shrink-0" />
+                                  <Link2 className="w-4 h-4 text-zinc-400 dark:text-zinc-500 flex-shrink-0" />
                                 ) : (
                                   <FileText className="w-4 h-4 text-zinc-400 dark:text-zinc-500 flex-shrink-0" />
                                 )}
@@ -611,7 +627,7 @@ export default function SearchInterface({ docsItems }: SearchInterfaceProps) {
                             aria-selected={selected === globalIdx}
                           >
                             {item.isChild ? (
-                              <Hash className="w-4 h-4 text-zinc-400 dark:text-zinc-500 flex-shrink-0" />
+                              <Link2 className="w-4 h-4 text-zinc-400 dark:text-zinc-500 flex-shrink-0" />
                             ) : (
                               <FileText className="w-4 h-4 text-zinc-400 dark:text-zinc-500 flex-shrink-0" />
                             )}
