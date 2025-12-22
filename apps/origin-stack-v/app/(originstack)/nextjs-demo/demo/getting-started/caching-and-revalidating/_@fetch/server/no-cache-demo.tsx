@@ -84,7 +84,7 @@ export default async function NoCacheDemo() {
                         <CardTitle>No Cache Demo</CardTitle>
                         <CardDescription>
                             <code className="text-xs bg-muted px-1.5 py-0.5 rounded">
-                                cache: 'no-store'
+                                cache: &apos;no-store&apos;
                             </code>
                         </CardDescription>
                     </div>

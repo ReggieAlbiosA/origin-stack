@@ -44,11 +44,11 @@ export default function QuotePostsDemoPage() {
           <CardContent className="space-y-3">
             <div className="bg-zinc-50 dark:bg-zinc-950 rounded-lg p-4 font-mono text-sm">
               <div className="text-zinc-500 dark:text-zinc-400 mb-1">
-                // Using cacheTag directive
+                {/* Using cacheTag directive */}
               </div>
               <div className="text-zinc-900 dark:text-zinc-100">
                 <span className="text-purple-600 dark:text-purple-400">
-                  "use cache"
+                  &quot;use cache&quot;
                 </span>
                 <br />
                 <span className="text-blue-600 dark:text-blue-400">
@@ -56,7 +56,7 @@ export default function QuotePostsDemoPage() {
                 </span>
                 (
                 <span className="text-green-600 dark:text-green-400">
-                  "all-posts"
+                  &quot;all-posts&quot;
                 </span>
                 )
               </div>
@@ -90,11 +90,11 @@ export default function QuotePostsDemoPage() {
                   </span>
                   (
                   <span className="text-green-600 dark:text-green-400">
-                    "all-posts"
+                    &quot;all-posts&quot;
                   </span>
                   ,{" "}
                   <span className="text-green-600 dark:text-green-400">
-                    "max"
+                    &quot;max&quot;
                   </span>
                   )
                 </div>
@@ -109,7 +109,7 @@ export default function QuotePostsDemoPage() {
                   </span>
                   (
                   <span className="text-green-600 dark:text-green-400">
-                    "my-posts"
+                    &quot;my-posts&quot;
                   </span>
                   )
                 </div>
@@ -161,7 +161,7 @@ export default function QuotePostsDemoPage() {
               <p className="text-sm text-zinc-600 dark:text-zinc-400">
                 Demonstrates tag-based caching with{" "}
                 <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded">
-                  cacheTag("all-posts")
+                  cacheTag(&quot;all-posts&quot;)
                 </code>
                 . Data is cached and can be invalidated using{" "}
                 <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded">
@@ -224,7 +224,7 @@ export default function QuotePostsDemoPage() {
               <p className="text-sm text-zinc-600 dark:text-zinc-400">
                 Shows user-specific caching with{" "}
                 <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded">
-                  cacheTag("my-posts")
+                  cacheTag(&quot;my-posts&quot;)
                 </code>
                 . Uses{" "}
                 <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded">
@@ -343,7 +343,7 @@ export default function QuotePostsDemoPage() {
                 <p className="text-sm text-zinc-600 dark:text-zinc-400">
                   Functions use{" "}
                   <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded">
-                    "use cache"
+                    &quot;use cache&quot;
                   </code>{" "}
                   and{" "}
                   <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded">
@@ -351,11 +351,11 @@ export default function QuotePostsDemoPage() {
                   </code>{" "}
                   to mark cached data with specific tags like{" "}
                   <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded">
-                    "all-posts"
+                    &quot;all-posts&quot;
                   </code>{" "}
                   or{" "}
                   <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded">
-                    "my-posts"
+                    &quot;my-posts&quot;
                   </code>
                   .
                 </p>
@@ -373,11 +373,11 @@ export default function QuotePostsDemoPage() {
                 <p className="text-sm text-zinc-600 dark:text-zinc-400">
                   When creating a new post, the server action calls{" "}
                   <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded">
-                    revalidateTag("all-posts", "max")
+                    revalidateTag(&quot;all-posts&quot;, &quot;max&quot;)
                   </code>{" "}
                   for stale-while-revalidate behavior and{" "}
                   <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded">
-                    updateTag("my-posts")
+                    updateTag(&quot;my-posts&quot;)
                   </code>{" "}
                   for immediate cache expiration.
                 </p>
@@ -441,7 +441,7 @@ export default function QuotePostsDemoPage() {
               <span>
                 <strong>revalidateTag</strong> with{" "}
                 <code className="text-xs bg-amber-100 dark:bg-amber-900/30 px-1.5 py-0.5 rounded">
-                  "max"
+                  &quot;max&quot;
                 </code>{" "}
                 profile enables stale-while-revalidate for better UX
               </span>
@@ -449,7 +449,7 @@ export default function QuotePostsDemoPage() {
             <li className="flex items-start gap-2">
               <span className="text-amber-600 dark:text-amber-400 mt-1">•</span>
               <span>
-                <strong>updateTag</strong> is perfect for "read-your-own-writes"
+                <strong>updateTag</strong> is perfect for &quot;read-your-own-writes&quot;
                 scenarios where immediate visibility is critical
               </span>
             </li>

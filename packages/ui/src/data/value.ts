@@ -1,5 +1,5 @@
 import type { SidebarConfig } from "@/components/composite-ui/client/sidebar";
-import type { SidebarConfig as SearchSidebarConfig } from "@/src/components/composables/client/sidebar";
+import type { SidebarConfig as SearchSidebarConfig } from "@/components/composables/client/sidebar";
 
 /**
  * Demo page content values

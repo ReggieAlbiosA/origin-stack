@@ -21,7 +21,7 @@ export type ProviderConfig<TInputs, TPlan extends Plan> = {
     name: string
     defaultInputs: TInputs
     planLimits: Record<TPlan, TInputs>
-    calculate: (inputs: TInputs, plan: TPlan, ...args: any[]) => CostResult
+    calculate: (inputs: TInputs, plan: TPlan, teamMembers?: number) => CostResult
     cookieKey: string
     teamMembersKey?: string
 }

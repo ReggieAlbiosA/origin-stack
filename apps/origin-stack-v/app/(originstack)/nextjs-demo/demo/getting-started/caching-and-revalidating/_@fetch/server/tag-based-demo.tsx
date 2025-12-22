@@ -105,7 +105,7 @@ export default async function TagBasedDemo() {
                         <CardTitle>Tag-based Revalidation Demo</CardTitle>
                         <CardDescription>
                             <code className="text-xs bg-muted px-1.5 py-0.5 rounded">
-                                next: &#123; tags: ['posts'] &#125;
+                                next: &#123; tags: [&apos;posts&apos;] &#125;
                             </code>
                         </CardDescription>
                     </div>
@@ -152,7 +152,7 @@ export default async function TagBasedDemo() {
                     </div>
                     <div className="flex justify-between">
                         <span>Cache tag:</span>
-                        <span className="font-mono">'posts'</span>
+                        <span className="font-mono">&apos;posts&apos;</span>
                     </div>
                     <div className="flex justify-between">
                         <span>Revalidation:</span>
@@ -162,7 +162,7 @@ export default async function TagBasedDemo() {
 
                 <div className="flex items-center justify-between p-3 bg-muted/50 rounded-md">
                     <p className="text-xs text-muted-foreground">
-                        Click to invalidate 'posts' cache:
+                        Click to invalidate &apos;posts&apos; cache:
                     </p>
                     <RevalidateButton
                         action={revalidatePostsTag}
@@ -174,7 +174,7 @@ export default async function TagBasedDemo() {
                 <div className="bg-indigo-50 dark:bg-indigo-950/20 border border-indigo-200 dark:border-indigo-800 rounded-md p-3">
                     <p className="text-xs text-indigo-800 dark:text-indigo-200">
                         <strong>How it works:</strong> This data is cached indefinitely until you manually trigger
-                        invalidation. When you click "Invalidate Cache", all fetch requests tagged with 'posts' are
+                        invalidation. When you click &quot;Invalidate Cache&quot;, all fetch requests tagged with &apos;posts&apos; are
                         marked as stale. The next page visit will refetch the data. Perfect for CMS updates, form
                         submissions, or webhook-triggered updates!
                     </p>

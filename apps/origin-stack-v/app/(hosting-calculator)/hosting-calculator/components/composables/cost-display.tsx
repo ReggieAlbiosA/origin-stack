@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { ResultSummaryCard } from "../ui/result-summary-card";
-import { ValueDisplayGrid } from "../ui/value-display-grid";
 import type { CostResult } from "../../types";
 
 type CostDisplayProps = {
@@ -10,7 +9,6 @@ type CostDisplayProps = {
   plan: string;
   providerName: string;
   providerIcon?: React.ReactNode;
-  teamMembers?: number;
 };
 
 export function CostDisplay({
@@ -18,7 +16,6 @@ export function CostDisplay({
   plan,
   providerName,
   providerIcon,
-  teamMembers,
 }: CostDisplayProps) {
   const secondaryMetrics = [
     { label: "Base", value: `$${cost.basePrice.toFixed(2)}` },

@@ -26,7 +26,7 @@ export default function VercelPage() {
 }
 
 function VercelCalculator() {
-  const { cost, plan, setPlan, reset } = useCalculator<any, VercelPlan>();
+  const { cost, plan, setPlan, reset } = useCalculator<Record<string, unknown>, VercelPlan>();
 
   const plans = [
     { id: "hobby" as const, label: "Vercel Hobby", icon: <SiNextdotjs /> },

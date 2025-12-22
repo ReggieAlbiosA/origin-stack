@@ -168,7 +168,7 @@ export default async function TimeBasedDemo() {
                     </div>
                     <div className="flex justify-between">
                         <span>Cache tag:</span>
-                        <span className="font-mono">'weather'</span>
+                        <span className="font-mono">&apos;weather&apos;</span>
                     </div>
                 </div>
 

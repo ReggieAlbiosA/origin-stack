@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { ValueDisplayRow } from "../ui/value-display-row";
 import { cn } from "@/lib/utils";
 import { Info } from "lucide-react";
 import type { CostBreakdownItem } from "../../types";

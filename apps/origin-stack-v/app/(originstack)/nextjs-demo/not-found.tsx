@@ -34,7 +34,7 @@ export default async function NotFound() {
                             Page Not Found
                         </h2>
                         <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-md mx-auto leading-relaxed">
-                            The page you're looking for doesn't exist or has been moved.
+                            The page you&apos;re looking for doesn&apos;t exist or has been moved.
                         </p>
                     </div>
                 </div>

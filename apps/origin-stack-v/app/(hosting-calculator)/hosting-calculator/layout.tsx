@@ -13,7 +13,7 @@ import {
   SidebarNavigationGroup,
   SidebarNavigationItemLink,
 } from "@/components/composables/client/sidebar";
-import { Layers, Database, Calculator } from "lucide-react";
+import { Layers, Calculator } from "lucide-react";
 import { SiNextdotjs, SiCloudflare } from "react-icons/si";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const jetBrains = JetBrains_Mono({
