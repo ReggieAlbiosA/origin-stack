@@ -254,29 +254,44 @@ export function SidebarNavigationTrigger({
   ...props
 }: SidebarNavigationTriggerProps) {
   const Comp = asChild ? Slot : "h3";
-  const { isOpen, toggle, collapsible, isActive } = useSidebarCollapsible();
+  const { isOpen, toggle, collapsible, isActive, depth } =
+    useSidebarCollapsible();
 
   const handleClick = (e: React.MouseEvent<HTMLHeadingElement>) => {
     if (collapsible) toggle();
     props.onClick?.(e);
   };
 
+  // Show left border line for all levels except root (depth 0)
+  const showBorderLine = depth > 0;
+
   return (
     <Comp
       {...props}
       onClick={collapsible ? handleClick : props.onClick}
       className={cn(
-        "flex items-center justify-between gap-2 px-2 py-2",
+        "flex items-center justify-between gap-2",
+        showBorderLine ? "px-3 py-1.5" : "px-2 py-2",
         "text-xs font-semibold uppercase tracking-wider",
-        "transition-all duration-200 ease-in-out",
-        "rounded-md",
+        "transition-all duration-150 ease-in-out",
+        // Left border line for non-root levels (matching link style)
+        showBorderLine
+          ? [
+              "border-l",
+              isActive
+                ? "border-zinc-900 dark:border-zinc-100"
+                : "border-zinc-200 dark:border-zinc-800 hover:border-zinc-500 dark:hover:border-zinc-500",
+            ]
+          : "rounded-md",
         // Active state - when this section contains the active route
         isActive
           ? "text-zinc-700 dark:text-zinc-200"
           : "text-zinc-500 dark:text-zinc-400",
         props.className,
         collapsible &&
-          "cursor-pointer select-none hover:text-zinc-700 dark:hover:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+          "cursor-pointer select-none hover:text-zinc-700 dark:hover:text-zinc-300",
+        // Only apply hover background for root level (no border line)
+        collapsible && !showBorderLine && "hover:bg-zinc-100 dark:hover:bg-zinc-800"
       )}
     >
       {children}
