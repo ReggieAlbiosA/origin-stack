@@ -8,7 +8,7 @@ import type {
   DiagramLink,
   BranchConfig,
   AnimationStep,
-} from "../../types";
+} from "../types";
 
 // ============================================================================
 // Context

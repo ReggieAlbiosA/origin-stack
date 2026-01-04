@@ -24,7 +24,7 @@ import {
 import { DesktopViewThemeToggle } from "@repo/ui/components/header/client/theme-toggle";
 import SearchInterface from "@repo/ui/components/header/client/search-interface";
 import { Github, Network } from "lucide-react";
-import { navigationConfig, type NavigationItem } from "./navigation.config";
+import { navigationConfig, type NavigationItem } from "./_config/navigation.config";
 
 // Helper function to extract all routes from a section's children (recursively)
 function extractRoutes(items: NavigationItem[]): string[] {

@@ -16,9 +16,17 @@ import {
   Key,
   Table,
   FileJson,
+  Box,
+  Layers,
+  HardDrive,
+  Network,
+  Server,
+  Settings,
+  Cpu,
+  Sparkles,
   type LucideIcon,
 } from "lucide-react";
-import { SiGit } from "react-icons/si";
+import { SiGit, SiDocker } from "react-icons/si";
 import { IconType } from "react-icons/lib";
 
 // Navigation configuration types
@@ -543,6 +551,334 @@ export const navigationConfig: NavigationItem[] = [
             type: "link",
             label: "Security",
             href: "/architecture-graph/git/best-practices/security",
+          },
+        ],
+      },
+    ],
+  },
+  // ============================================================================
+  // Docker Section
+  // ============================================================================
+  {
+    type: "section",
+    label: "Docker",
+    icon: SiDocker,
+    collapsible: true,
+    defaultOpen: false,
+    children: [
+      {
+        type: "section",
+        label: "Core Concepts",
+        icon: Cpu,
+        collapsible: true,
+        defaultOpen: false,
+        children: [
+          {
+            type: "link",
+            label: "Architecture",
+            href: "/architecture-graph/docker/core-concepts/architecture",
+          },
+          {
+            type: "link",
+            label: "Daemon & Client",
+            href: "/architecture-graph/docker/core-concepts/daemon-client",
+          },
+          {
+            type: "link",
+            label: "containerd",
+            href: "/architecture-graph/docker/core-concepts/containerd",
+          },
+          {
+            type: "link",
+            label: "runc",
+            href: "/architecture-graph/docker/core-concepts/runc",
+          },
+        ],
+      },
+      {
+        type: "section",
+        label: "Containers",
+        icon: Box,
+        collapsible: true,
+        defaultOpen: false,
+        children: [
+          {
+            type: "link",
+            label: "Container Basics",
+            href: "/architecture-graph/docker/containers/basics",
+          },
+          {
+            type: "link",
+            label: "Container Lifecycle",
+            href: "/architecture-graph/docker/containers/lifecycle",
+          },
+          {
+            type: "link",
+            label: "Isolation",
+            href: "/architecture-graph/docker/containers/isolation",
+          },
+          {
+            type: "link",
+            label: "Processes",
+            href: "/architecture-graph/docker/containers/processes",
+          },
+          {
+            type: "link",
+            label: "Resource Limits",
+            href: "/architecture-graph/docker/containers/resource-limits",
+          },
+        ],
+      },
+      {
+        type: "section",
+        label: "Images",
+        icon: Layers,
+        collapsible: true,
+        defaultOpen: false,
+        children: [
+          {
+            type: "link",
+            label: "Image Layers",
+            href: "/architecture-graph/docker/images/layers",
+          },
+          {
+            type: "link",
+            label: "Dockerfile",
+            href: "/architecture-graph/docker/images/dockerfile",
+          },
+          {
+            type: "link",
+            label: "Build Context",
+            href: "/architecture-graph/docker/images/build-context",
+          },
+          {
+            type: "link",
+            label: "Multi-stage Builds",
+            href: "/architecture-graph/docker/images/multi-stage",
+          },
+          {
+            type: "link",
+            label: "Caching",
+            href: "/architecture-graph/docker/images/caching",
+          },
+          {
+            type: "link",
+            label: "Registry",
+            href: "/architecture-graph/docker/images/registry",
+          },
+        ],
+      },
+      {
+        type: "section",
+        label: "Volumes",
+        icon: HardDrive,
+        collapsible: true,
+        defaultOpen: false,
+        children: [
+          {
+            type: "link",
+            label: "Volume Basics",
+            href: "/architecture-graph/docker/volumes/basics",
+          },
+          {
+            type: "link",
+            label: "Bind Mounts",
+            href: "/architecture-graph/docker/volumes/bind-mounts",
+          },
+          {
+            type: "link",
+            label: "Named Volumes",
+            href: "/architecture-graph/docker/volumes/named-volumes",
+          },
+          {
+            type: "link",
+            label: "tmpfs Mounts",
+            href: "/architecture-graph/docker/volumes/tmpfs",
+          },
+          {
+            type: "link",
+            label: "Volume Drivers",
+            href: "/architecture-graph/docker/volumes/drivers",
+          },
+        ],
+      },
+      {
+        type: "section",
+        label: "Networking",
+        icon: Network,
+        collapsible: true,
+        defaultOpen: false,
+        children: [
+          {
+            type: "link",
+            label: "Network Basics",
+            href: "/architecture-graph/docker/networking/basics",
+          },
+          {
+            type: "link",
+            label: "Bridge Networks",
+            href: "/architecture-graph/docker/networking/bridge",
+          },
+          {
+            type: "link",
+            label: "Host Networks",
+            href: "/architecture-graph/docker/networking/host",
+          },
+          {
+            type: "link",
+            label: "Overlay Networks",
+            href: "/architecture-graph/docker/networking/overlay",
+          },
+          {
+            type: "link",
+            label: "Port Mapping",
+            href: "/architecture-graph/docker/networking/port-mapping",
+          },
+          {
+            type: "link",
+            label: "DNS Resolution",
+            href: "/architecture-graph/docker/networking/dns",
+          },
+        ],
+      },
+      {
+        type: "section",
+        label: "Docker Compose",
+        icon: Settings,
+        collapsible: true,
+        defaultOpen: false,
+        children: [
+          {
+            type: "link",
+            label: "Compose Basics",
+            href: "/architecture-graph/docker/compose/basics",
+          },
+          {
+            type: "link",
+            label: "Services",
+            href: "/architecture-graph/docker/compose/services",
+          },
+          {
+            type: "link",
+            label: "Dependencies",
+            href: "/architecture-graph/docker/compose/dependencies",
+          },
+          {
+            type: "link",
+            label: "Networks",
+            href: "/architecture-graph/docker/compose/networks",
+          },
+          {
+            type: "link",
+            label: "Volumes",
+            href: "/architecture-graph/docker/compose/volumes",
+          },
+          {
+            type: "link",
+            label: "Profiles",
+            href: "/architecture-graph/docker/compose/profiles",
+          },
+        ],
+      },
+      {
+        type: "section",
+        label: "Orchestration",
+        icon: Server,
+        collapsible: true,
+        defaultOpen: false,
+        children: [
+          {
+            type: "link",
+            label: "Swarm Basics",
+            href: "/architecture-graph/docker/orchestration/swarm-basics",
+          },
+          {
+            type: "link",
+            label: "Nodes",
+            href: "/architecture-graph/docker/orchestration/nodes",
+          },
+          {
+            type: "link",
+            label: "Services",
+            href: "/architecture-graph/docker/orchestration/services",
+          },
+          {
+            type: "link",
+            label: "Stacks",
+            href: "/architecture-graph/docker/orchestration/stacks",
+          },
+          {
+            type: "link",
+            label: "Secrets",
+            href: "/architecture-graph/docker/orchestration/secrets",
+          },
+        ],
+      },
+      {
+        type: "section",
+        label: "Security",
+        icon: Shield,
+        collapsible: true,
+        defaultOpen: false,
+        children: [
+          {
+            type: "link",
+            label: "Root vs Rootless",
+            href: "/architecture-graph/docker/security/root-vs-rootless",
+          },
+          {
+            type: "link",
+            label: "User Namespaces",
+            href: "/architecture-graph/docker/security/user-namespaces",
+          },
+          {
+            type: "link",
+            label: "Capabilities",
+            href: "/architecture-graph/docker/security/capabilities",
+          },
+          {
+            type: "link",
+            label: "Seccomp",
+            href: "/architecture-graph/docker/security/seccomp",
+          },
+          {
+            type: "link",
+            label: "Image Scanning",
+            href: "/architecture-graph/docker/security/image-scanning",
+          },
+        ],
+      },
+      {
+        type: "section",
+        label: "Best Practices",
+        icon: Sparkles,
+        collapsible: true,
+        defaultOpen: false,
+        children: [
+          {
+            type: "link",
+            label: "Dockerfile",
+            href: "/architecture-graph/docker/best-practices/dockerfile",
+          },
+          {
+            type: "link",
+            label: "Image Size",
+            href: "/architecture-graph/docker/best-practices/image-size",
+          },
+          {
+            type: "link",
+            label: "Layer Optimization",
+            href: "/architecture-graph/docker/best-practices/layer-optimization",
+          },
+          {
+            type: "link",
+            label: "Security",
+            href: "/architecture-graph/docker/best-practices/security",
+          },
+          {
+            type: "link",
+            label: "CI/CD",
+            href: "/architecture-graph/docker/best-practices/ci-cd",
           },
         ],
       },
