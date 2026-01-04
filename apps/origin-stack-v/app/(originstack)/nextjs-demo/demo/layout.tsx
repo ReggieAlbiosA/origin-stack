@@ -9,8 +9,8 @@ import {
   SidebarNavigationItemLink,
   type NavigationSection,
   type NavigationItem,
-} from "@repo/ui/components/sidebar/client/sidebar";
-import { VersionNavigation } from "@repo/ui/components/sidebar/client/version-navigation";
+} from "@repo/ui/components/composables/client/sidebar";
+import { VersionNavigation } from "@repo/ui/components/composables/client/version-navigation";
 
 // Navigation data structure
 const navigationSections = [

@@ -73,7 +73,7 @@ export default function GlobalNotFound() {
                         {/* Description */}
                         <div className="space-y-3">
                             <p className="text-xl md:text-2xl text-zinc-700 dark:text-zinc-300 max-w-lg mx-auto leading-relaxed">
-                                The page you're looking for doesn't exist.
+                                The page you&apos;re looking for doesn&apos;t exist.
                             </p>
                             <p className="text-base text-zinc-500 dark:text-zinc-400">
                                 It might have been moved or deleted.

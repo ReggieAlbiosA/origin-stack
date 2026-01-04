@@ -19,7 +19,7 @@ export default async function proxy(request: NextRequest) {
 
     // Allow unauthenticated users to access sign-in page
     return NextResponse.next();
-  } catch (error) {
+  } catch {
     // On error, allow access to sign-in page
     return NextResponse.next();
   }

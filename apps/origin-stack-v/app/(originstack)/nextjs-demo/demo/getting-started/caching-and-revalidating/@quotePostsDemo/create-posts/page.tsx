@@ -5,8 +5,6 @@ import { prisma } from "@repo/database/prisma";
 import { redirect } from "next/navigation";
 import {
   Card,
-  CardHeader,
-  CardTitle,
   CardContent,
 } from "@repo/ui/components/shadcn-ui/card";
 import { Route } from "next";

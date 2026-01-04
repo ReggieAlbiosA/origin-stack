@@ -1,4 +1,4 @@
-import { FileSystemObject } from "@repo/ui/components/layout/types/types";
+import type { FileSystemObject } from "@repo/ui/lib/file-system";
 import TabbedDashboard from "@repo/ui/components/layout/server/tabbed-dashboard";
 
 export default function PartialPrerenderingLayout({

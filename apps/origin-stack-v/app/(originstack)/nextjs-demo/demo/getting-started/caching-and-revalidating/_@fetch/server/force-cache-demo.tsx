@@ -66,7 +66,7 @@ async function getRandomAdvice(): Promise<{
     console.warn("Advice API unavailable, using fallback data:", error);
     // Random fallback advice
     const randomAdvice =
-      FALLBACK_ADVICE[Math.floor(Math.random() * FALLBACK_ADVICE.length)];
+      FALLBACK_ADVICE[Math.floor(Math.random() * FALLBACK_ADVICE.length)] ?? FALLBACK_ADVICE[0]!;
     return {
       data: randomAdvice,
       error: error instanceof Error ? error.message : "Unknown error",
@@ -103,7 +103,7 @@ export default async function ForceCacheDemo() {
             <CardTitle>Force Cache Demo</CardTitle>
             <CardDescription>
               <code className="text-xs bg-muted px-1.5 py-0.5 rounded">
-                cache: 'force-cache'
+                cache: &apos;force-cache&apos;
               </code>
             </CardDescription>
           </div>
@@ -118,7 +118,7 @@ export default async function ForceCacheDemo() {
       <CardContent className="space-y-4">
         <div className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-950/20 dark:to-blue-950/20 border rounded-lg p-6">
           <blockquote className="space-y-4">
-            <p className="text-lg italic leading-relaxed">"{advice.advice}"</p>
+            <p className="text-lg italic leading-relaxed">&quot;{advice.advice}&quot;</p>
             <footer className="flex items-center justify-between">
               <cite className="text-sm font-semibold not-italic">
                 Advice #{advice.id}
@@ -140,7 +140,7 @@ export default async function ForceCacheDemo() {
           </div>
           <div className="flex justify-between">
             <span>Cache tag:</span>
-            <span className="font-mono">'advice'</span>
+            <span className="font-mono">&apos;advice&apos;</span>
           </div>
           <div className="flex justify-between">
             <span>Revalidation:</span>
@@ -155,7 +155,7 @@ export default async function ForceCacheDemo() {
             will appear unless you rebuild the application or manually
             invalidate the cache using{" "}
             <code className="bg-amber-100 dark:bg-amber-900 px-1 rounded">
-              revalidateTag('advice')
+              revalidateTag(&apos;advice&apos;)
             </code>
             .
           </p>

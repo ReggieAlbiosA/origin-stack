@@ -67,7 +67,7 @@ async function MyPosts() {
         <EmptyHeader>
           <EmptyTitle>No Posts Yet</EmptyTitle>
           <EmptyDescription>
-            You haven't created any posts yet, {session.user.name}. Start
+            You haven&apos;t created any posts yet, {session.user.name}. Start
             sharing your inspiring quotes!
           </EmptyDescription>
         </EmptyHeader>

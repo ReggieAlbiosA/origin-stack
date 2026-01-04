@@ -4,10 +4,8 @@ import * as React from "react";
 import type { CalculatorContextValue, ProviderConfig, Plan } from "../../types";
 import { getCookie, setCookie } from "../utils/cookies";
 
-const CalculatorContext = React.createContext<CalculatorContextValue<
-  any,
-  any
-> | null>(null);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const CalculatorContext = React.createContext<CalculatorContextValue<any, any> | null>(null);
 
 export function CalculatorProvider<TInputs, TPlan extends Plan>({
   config,
@@ -35,7 +33,7 @@ export function CalculatorProvider<TInputs, TPlan extends Plan>({
       try {
         const parsed = JSON.parse(savedInputs);
         setInputsState(parsed);
-      } catch (e) {
+      } catch {
         console.error(`Failed to parse ${config.cookieKey} from cookie`);
       }
     }
@@ -125,13 +123,16 @@ export function CalculatorProvider<TInputs, TPlan extends Plan>({
   };
 
   return (
-    <CalculatorContext.Provider value={value}>
+    <CalculatorContext.Provider value={value as unknown as CalculatorContextValue<Record<string, unknown>, Plan>}>
       {children}
     </CalculatorContext.Provider>
   );
 }
 
-export function useCalculator<TInputs = any, TPlan extends Plan = Plan>() {
+export function useCalculator<TInputs extends Record<string, unknown> = Record<string, unknown>, TPlan extends Plan = Plan>(): CalculatorContextValue<TInputs, TPlan> & {
+  teamMembers?: number;
+  setTeamMembers?: (members: number) => void;
+} {
   const context = React.useContext(CalculatorContext);
   if (!context) {
     throw new Error("useCalculator must be used within CalculatorProvider");

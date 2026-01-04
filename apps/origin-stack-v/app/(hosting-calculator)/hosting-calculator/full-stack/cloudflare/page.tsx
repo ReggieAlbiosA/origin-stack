@@ -12,7 +12,7 @@ import { CloudflareInputs } from "./inputs";
 import { SiCloudflare } from "react-icons/si";
 import type { CloudflarePlan } from "./types";
 import { TrendingUp } from "lucide-react";
-import { Sidebar, SidebarContent } from "@/components/sidebar/client/sidebar";
+import { Sidebar, SidebarContent } from "@/components/composables/client/sidebar";
 
 export default function CloudflarePage() {
   return (
@@ -23,7 +23,7 @@ export default function CloudflarePage() {
 }
 
 function CloudflareCalculator() {
-  const { cost, plan, setPlan, reset } = useCalculator<any, CloudflarePlan>();
+  const { cost, plan, setPlan, reset } = useCalculator<Record<string, unknown>, CloudflarePlan>();
 
   const plans = [
     { id: "free" as const, label: "Workers Free", icon: <SiCloudflare /> },

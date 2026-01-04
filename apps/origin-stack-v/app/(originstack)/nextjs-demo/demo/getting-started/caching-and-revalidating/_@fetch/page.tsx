@@ -85,7 +85,7 @@ export default function CachingRevalidatingDemoPage() {
                 <span>
                   Use{" "}
                   <code className="bg-blue-100 dark:bg-blue-900 px-1 rounded">
-                    cache: 'no-store'
+                    cache: &apos;no-store&apos;
                   </code>{" "}
                   for real-time data that must always be fresh
                 </span>
@@ -97,7 +97,7 @@ export default function CachingRevalidatingDemoPage() {
                 <span>
                   Use{" "}
                   <code className="bg-blue-100 dark:bg-blue-900 px-1 rounded">
-                    cache: 'force-cache'
+                    cache: &apos;force-cache&apos;
                   </code>{" "}
                   for static content that rarely changes
                 </span>

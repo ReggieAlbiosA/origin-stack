@@ -6,7 +6,7 @@ import {
   DialogTitle,
 } from "@/components/shadcn-ui/dialog";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { Button } from "@/components/shadcn-ui/button";
 import { authClient } from "@repo/auth/auth-client";
@@ -15,11 +15,6 @@ export default function SignInPage() {
   const router = useRouter();
   const [open, setOpen] = useState(true);
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    // Open dialog when component mounts
-    setOpen(true);
-  }, []);
 
   const handleOpenChange = (isOpen: boolean) => {
     setOpen(isOpen);

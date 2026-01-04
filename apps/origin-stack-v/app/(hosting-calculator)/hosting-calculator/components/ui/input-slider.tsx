@@ -104,7 +104,7 @@ export function InputSlider({
         min={min}
         max={max}
         step={step}
-        onValueChange={(vals) => onValueChange(vals[0])}
+        onValueChange={(vals) => onValueChange(vals[0] ?? min)}
         className="pt-1"
       />
 

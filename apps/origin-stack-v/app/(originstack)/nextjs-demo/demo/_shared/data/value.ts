@@ -1,4 +1,4 @@
-import type { SidebarConfig } from "@repo/ui/components/sidebar/client/sidebar";
+import type { SidebarConfig } from "@repo/ui/components/composables/client/sidebar";
 
 /**
  * Demo page content values

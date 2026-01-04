@@ -1,6 +1,6 @@
 import Sidebar from "@repo/ui/components/composite-ui/client/sidebar";
 import { sidebarConfig } from "@/app/(originstack)/react-demo/demo/_shared/data/value";
-import { VersionNavigation } from "@repo/ui/components/sidebar/client/version-navigation";
+import { VersionNavigation } from "@repo/ui/components/composables/client/version-navigation";
 
 export default function DemoLayout({
   children,
