@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import type { DiagramNode } from "../../types";
+import type { DiagramNode } from "../types";
 
 // ============================================================================
 // Path Generators

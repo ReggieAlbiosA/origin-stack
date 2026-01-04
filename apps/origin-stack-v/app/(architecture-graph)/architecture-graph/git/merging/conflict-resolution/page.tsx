@@ -1,14 +1,14 @@
 "use client";
 
-import { DiagramProvider } from "../../../components/core/provider";
+import { DiagramProvider } from "../../../_lib/core/provider";
 import {
   DiagramLayout,
   DiagramHeader,
   DiagramControls,
   DiagramCard,
   DiagramRenderer,
-} from "../../../components/config/diagram-ui";
-import { DiagramConfig } from "../../../types";
+} from "../../../_lib/ui/diagram-ui";
+import { DiagramConfig } from "../../../_lib/types";
 
 export const gitConflictResolutionConfig: DiagramConfig = {
   id: "git-conflict-resolution",

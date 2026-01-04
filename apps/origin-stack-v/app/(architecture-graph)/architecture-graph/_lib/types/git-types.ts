@@ -1,15 +1,19 @@
 // ============================================================================
+// Git-Specific Types (Node-based diagrams)
+// ============================================================================
+
+// ============================================================================
 // Node Types
 // ============================================================================
 
-export type NodeType = "main" | "feature" | "squash" | "merge" | "rebase" | "stash";
+export type GitNodeType = "main" | "feature" | "squash" | "merge" | "rebase" | "stash";
 
-export interface DiagramNode {
+export interface GitNode {
   id: string;
   label: string;
   x: number;
   y: number;
-  type: NodeType;
+  type: GitNodeType;
   radius?: number; // Default: 18
   hidden?: boolean; // For animation states
 }
@@ -18,7 +22,7 @@ export interface DiagramNode {
 // Link Types
 // ============================================================================
 
-export interface DiagramLink {
+export interface GitLink {
   source: string; // Node ID
   target: string; // Node ID
   curved?: boolean; // Auto-detect if source.y !== target.y
@@ -30,7 +34,7 @@ export interface DiagramLink {
 // Branch Types
 // ============================================================================
 
-export interface BranchConfig {
+export interface GitBranchConfig {
   name: string;
   color: string;
   y: number; // Y position for the branch line
@@ -43,7 +47,7 @@ export interface BranchConfig {
 // Animation Step Types
 // ============================================================================
 
-export interface AnimationStep {
+export interface GitAnimationStep {
   id: string;
   title: string;
   description: string; // HTML allowed for bold, etc.
@@ -55,23 +59,23 @@ export interface AnimationStep {
   highlightColor?: string; // Highlight stroke color
   fadeNodes?: string[]; // Node IDs to fade/gray out
   fadeLinks?: string[]; // Link targets to fade
-  addNodes?: DiagramNode[]; // New nodes to add
-  addLinks?: DiagramLink[]; // New links to add
+  addNodes?: GitNode[]; // New nodes to add
+  addLinks?: GitLink[]; // New links to add
   moveParticles?: {
     // Particle animation
     fromNodes: string[];
     toPosition: { x: number; y: number };
   };
-  updateBranches?: Partial<BranchConfig>[]; // Branch visibility changes
-  updateNodes?: Array<{ id: string; type: NodeType }>; // Update node types
+  updateBranches?: Partial<GitBranchConfig>[]; // Branch visibility changes
+  updateNodes?: Array<{ id: string; type: GitNodeType }>; // Update node types
   updateLinks?: Array<{ source: string; target: string; curved?: boolean }>; // Update link properties
 }
 
 // ============================================================================
-// Diagram Config (Main Config Object)
+// Git Diagram Config
 // ============================================================================
 
-export interface DiagramConfig {
+export interface GitDiagramConfig {
   // Metadata
   id: string;
   title: string;
@@ -96,14 +100,14 @@ export interface DiagramConfig {
   };
 
   // Branch definitions
-  branches: BranchConfig[];
+  branches: GitBranchConfig[];
 
   // Initial state
-  initialNodes: DiagramNode[];
-  initialLinks: DiagramLink[];
+  initialNodes: GitNode[];
+  initialLinks: GitLink[];
 
   // Animation configuration
-  steps: AnimationStep[];
+  steps: GitAnimationStep[];
 
   // Action button config
   primaryAction: {
@@ -120,16 +124,16 @@ export interface DiagramConfig {
 }
 
 // ============================================================================
-// Context Types
+// Git Diagram Context
 // ============================================================================
 
-export interface DiagramContextValue {
-  config: DiagramConfig;
+export interface GitDiagramContextValue {
+  config: GitDiagramConfig;
 
   // State
-  nodes: DiagramNode[];
-  links: DiagramLink[];
-  branches: BranchConfig[];
+  nodes: GitNode[];
+  links: GitLink[];
+  branches: GitBranchConfig[];
   currentStep: number;
   isAnimating: boolean;
   isComplete: boolean;
@@ -145,5 +149,5 @@ export interface DiagramContextValue {
   resume: () => Promise<void>;
 
   // Current step info
-  stepInfo: AnimationStep | null;
+  stepInfo: GitAnimationStep | null;
 }
