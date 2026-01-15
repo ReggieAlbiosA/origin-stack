@@ -103,24 +103,32 @@ export const navigationConfig: NavigationItem[] = [
             href: "/architecture-graph/git/branching/basics",
           },
           {
-            type: "link",
-            label: "Feature Branches",
-            href: "/architecture-graph/git/branching/feature",
-          },
-          {
-            type: "link",
-            label: "Release Branches",
-            href: "/architecture-graph/git/branching/release",
-          },
-          {
-            type: "link",
-            label: "Hotfix Branches",
-            href: "/architecture-graph/git/branching/hotfix",
-          },
-          {
-            type: "link",
-            label: "Development Branches",
-            href: "/architecture-graph/git/branching/development",
+            type: "section",
+            label: "Model",
+            collapsible: true,
+            defaultOpen: false,
+            children: [
+              {
+                type: "link",
+                label: "GitFlow",
+                href: "/architecture-graph/git/branching/model/gitflow",
+              },
+              {
+                type: "link",
+                label: "GitHub Flow",
+                href: "/architecture-graph/git/branching/model/github-flow",
+              },
+              {
+                type: "link",
+                label: "GitLab Flow",
+                href: "/architecture-graph/git/branching/model/gitlab-flow",
+              },
+              {
+                type: "link",
+                label: "Trunk-Based",
+                href: "/architecture-graph/git/branching/model/trunk-based",
+              },
+            ],
           },
           {
             type: "link",
@@ -162,9 +170,50 @@ export const navigationConfig: NavigationItem[] = [
             href: "/architecture-graph/git/commits/revert",
           },
           {
-            type: "link",
+            type: "section",
             label: "Reset",
-            href: "/architecture-graph/git/commits/reset",
+            collapsible: true,
+            defaultOpen: false,
+            children: [
+              {
+                type: "link",
+                label: "Soft Reset",
+                href: "/architecture-graph/git/reset/soft",
+              },
+              {
+                type: "link",
+                label: "Mixed Reset",
+                href: "/architecture-graph/git/reset/mixed",
+              },
+              {
+                type: "link",
+                label: "Hard Reset",
+                href: "/architecture-graph/git/reset/hard",
+              },
+            ],
+          },
+          {
+            type: "section",
+            label: "Restore",
+            collapsible: true,
+            defaultOpen: false,
+            children: [
+              {
+                type: "link",
+                label: "Restore (Basic)",
+                href: "/architecture-graph/git/restore/basic",
+              },
+              {
+                type: "link",
+                label: "Restore --staged",
+                href: "/architecture-graph/git/restore/staged",
+              },
+              {
+                type: "link",
+                label: "Restore --source",
+                href: "/architecture-graph/git/restore/source",
+              },
+            ],
           },
           {
             type: "link",
@@ -182,11 +231,6 @@ export const navigationConfig: NavigationItem[] = [
         children: [
           {
             type: "link",
-            label: "Merge Strategies",
-            href: "/architecture-graph/git/merge/strategies",
-          },
-          {
-            type: "link",
             label: "Non Fast-Forward",
             href: "/architecture-graph/git/merging/non-fast-forward-merge",
           },
@@ -194,11 +238,6 @@ export const navigationConfig: NavigationItem[] = [
             type: "link",
             label: "Fast-Forward",
             href: "/architecture-graph/git/merging/fast-forward-merge",
-          },
-          {
-            type: "link",
-            label: "Three-Way Merge",
-            href: "/architecture-graph/git/merging/three-way",
           },
           {
             type: "link",

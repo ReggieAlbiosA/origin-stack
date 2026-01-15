@@ -5,12 +5,12 @@ const nextConfig: NextConfig = {
   typedRoutes: true,
   reactCompiler: true,
   reactStrictMode: true,
+  cacheComponents: true,
 
   experimental: {
     cssChunking: true,
     webVitalsAttribution: ["CLS", "LCP"],
     globalNotFound: true,
-    cacheComponents: true,
   },
 
   compiler: {
